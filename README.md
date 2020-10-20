@@ -1,3 +1,18 @@
+# REcycler
+
+REcycler is a tool to disassemble an exacutable and generate assembly code that can
+recreate an equivalent executable.
+
+At the same time, an effort is made to symbolize the generated assembly code to facilitate
+relocation and assembly-level edits.
+As this problem is undecidable in the general case, and pretty darn difficult in realistic scenarios,
+other analysis tools are leverage to identify all symbolizable locations.
+
+Because instruction encodings are complex, particularly on x86, sometimes the naively re-assembled code
+diverges from the original binary.
+REcycler uses machine learning (a loop of _disassemble-reassemble-compare-learn_) to detect these cases
+and patch up the problematic instructions.
+
 ## How to use
 
 Create a virtual env:
